@@ -1,3 +1,4 @@
+import TranslationPair from './TranslationPair';
 
 function App() {
   return (
@@ -9,6 +10,10 @@ function App() {
         <p className="subtitle">
           First interface of Rosetta using <strong>Bulma.io</strong>
         </p>
+      </div>
+      <TranslationPair />
+      <div className="container">
+        <p>Some random annoying text</p>
       </div>
     </section>
   );
