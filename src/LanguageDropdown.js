@@ -2,14 +2,30 @@ import { Component } from 'react';
 
 export default class LanguageDropdown extends Component {
 
-  formatItems = (list) => list.map(l => {
-    // eslint-disable-next-line
-    return <a className="dropdown-item">{l}</a>;
+  state = {
+    language: '',
+  };
+  
+  formatItems = (languages) => Object.entries(languages).map(([tag, lang]) => {
+    return (
+        // eslint-disable-next-line
+        <a
+          key={tag}
+          className="dropdown-item"
+          onClick={() => this.handleLanguageChange(tag)}
+        >{lang}</a>);
   });
+
+  handleLanguageChange = (tag) => {
+    this.setState({
+      language: Object.assign({}, this.props.languageList.primary, this.props.languageList.secondary)[tag]
+    });
+    this.props.handleLanguageChange(tag);
+  };
 
   render() {
     return (
-      <div className="field">
+      <div className="field has-addons">
         <div className="control">
           <div className="dropdown is-hoverable">
             <div className="dropdown-trigger">
@@ -24,14 +40,24 @@ export default class LanguageDropdown extends Component {
             <div className="dropdown-menu" id="dropdown-menu" role="menu">
               <div className="dropdown-content">
 
-                <input class="input" type="text" placeholder="Search language..." />
+                <input className="input" type="text" placeholder="Search language..." />
                 <hr className="dropdown-divider" />
-                {this.formatItems(this.props.languageList.primary)}
+                {this.formatItems(
+                  this.props.languageList.primary
+                )}
                 <hr className="dropdown-divider" />
-                {this.formatItems(this.props.languageList.secondary)}
+                {this.formatItems(
+                  this.props.languageList.secondary
+                )}
               </div>
             </div>
           </div>
+        </div>
+        <div className="control is-expanded has-icons-left has-icons-right">
+          <input className="input is-static" type="text" defaultValue={this.state.language} />
+          <span className="icon is-left">
+            <i className="fas fa-language"></i>
+          </span>
         </div>
       </div>
     );

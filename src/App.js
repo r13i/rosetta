@@ -12,9 +12,6 @@ function App() {
         </p>
       </div>
       <TranslationPair />
-      <div className="container">
-        <p>Some random annoying text</p>
-      </div>
     </section>
   );
 }
