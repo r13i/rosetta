@@ -47,10 +47,30 @@ export default class TranslationPair extends Component {
     console.log('B: ', e.target.value);
   };
 
+  // handleDelete = () => {
+  //   (document.querySelectorAll('.box .delete') || []).forEach($delete => {
+  //     const $box = $delete.parentNode;
+
+  //     $delete.addEventListener('click', () => {
+  //       $box.parentNode.removeChild($box);
+  //     });
+  //   });
+  // };
+
+  // componentDidMount() {
+  //   console.log("MOUNTING");
+  //   document.addEventListener('DOMContentLoaded', this.handleDelete);
+  // }
+    
+  // componentWillUnmount() {
+  //   console.log("UN-MOUNTING");
+  //   document.removeEventListener('DOMContentLoaded', this.handleDelete);
+  // }
+
   render() {
     return (
       <div className="tile is-ancestor box my-4">
-        <div className="tile is-parent" id="language-a">
+        <div className="tile is-parent">
           <div className="tile is-child field">
 
             <LanguageDropdown languageList={this.state.languageList} handleLanguageChange={this.handleLanguageAChange}/>
@@ -69,7 +89,7 @@ export default class TranslationPair extends Component {
           </div>
         </div>
 
-        <div className="tile is-parent" id="language-b">
+        <div className="tile is-parent">
           <div className="tile is-child field">
 
             <LanguageDropdown languageList={this.state.languageList} handleLanguageChange={this.handleLanguageBChange}/>
@@ -87,6 +107,7 @@ export default class TranslationPair extends Component {
             </div>
           </div>
         </div>
+        <button className="delete" />
       </div>
     );
   }
