@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import LanguageDropdown from "./LanguageDropdown";
+import LanguageDropdown from './LanguageDropdown';
 
-export default class TranslationPair extends Component {
+export default class TranslationComponent extends Component {
   maxTextLength = 1000;
   placeholder = 'Tell me a story...';
 
@@ -47,26 +47,6 @@ export default class TranslationPair extends Component {
     console.log('B: ', e.target.value);
   };
 
-  // handleDelete = () => {
-  //   (document.querySelectorAll('.box .delete') || []).forEach($delete => {
-  //     const $box = $delete.parentNode;
-
-  //     $delete.addEventListener('click', () => {
-  //       $box.parentNode.removeChild($box);
-  //     });
-  //   });
-  // };
-
-  // componentDidMount() {
-  //   console.log("MOUNTING");
-  //   document.addEventListener('DOMContentLoaded', this.handleDelete);
-  // }
-    
-  // componentWillUnmount() {
-  //   console.log("UN-MOUNTING");
-  //   document.removeEventListener('DOMContentLoaded', this.handleDelete);
-  // }
-
   render() {
     return (
       <div className="tile is-ancestor box my-4">
@@ -107,7 +87,7 @@ export default class TranslationPair extends Component {
             </div>
           </div>
         </div>
-        <button className="delete" />
+        <button className="delete" onClick={() => this.props.handleDeletePair(this.props.pairId)} />
       </div>
     );
   }
